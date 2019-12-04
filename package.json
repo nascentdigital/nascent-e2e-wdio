@@ -10,7 +10,7 @@
     ],
     "author": "Simeon de Dios <simeon@nascentdigital.com>",
     "license": "MIT",
-    "repository": "",
+    "repository": "git@github.com:nascentdigital/nascent-e2e-wdio.git",
     "main": "dist/index.js",
     "module": "dist/index.es.js",
     "jsnext:main": "dist/index.es.js",
