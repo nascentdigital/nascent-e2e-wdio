@@ -1,0 +1,23 @@
+# build
+/src
+.editorconfig
+.gitignore
+.npmignore
+.travis.yml
+.nvmrc
+rollup.config.js
+tsconfig.json
+tslint.json
+
+# dependencies
+node_modules
+
+# logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# misc
+.DS_Store
+.idea
+.vscode

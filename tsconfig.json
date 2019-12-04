@@ -1,0 +1,41 @@
+{
+    "compilerOptions": {
+        "target": "es5",
+        "module": "esnext",
+        "lib": [
+            "dom",
+            "dom.iterable",
+            "esnext"
+        ],
+        "typeRoots": [
+            "./node_modules/@types",
+            "./src/@types"
+        ],
+        "types": [
+            "node",
+            "@wdio/sync"
+        ],
+        "outDir": "dist",
+        "sourceMap": true,
+        "declaration": true,
+        "downlevelIteration": true,
+        "moduleResolution": "node",
+        "resolveJsonModule": true,
+        "isolatedModules": false,
+        "skipLibCheck": true,
+        "esModuleInterop": true,
+        "allowSyntheticDefaultImports": true,
+        "forceConsistentCasingInFileNames": true,
+        "noImplicitReturns": true,
+        "noImplicitThis": true,
+        "noImplicitAny": true,
+        "strictNullChecks": true,
+        "suppressImplicitAnyIndexErrors": true,
+        "noUnusedLocals": true,
+        "noUnusedParameters": true
+    },
+    "include": [
+        "src"
+    ],
+    "exclude": []
+}

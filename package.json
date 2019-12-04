@@ -1,0 +1,48 @@
+{
+    "private": false,
+    "name": "@nascentdigital/e2e-wdio",
+    "version": "0.1.1",
+    "description": "A set of extensions supporting E2E testing using WebdriverIO.",
+    "keywords": [
+        "wdio",
+        "e2e",
+        "testing"
+    ],
+    "author": "Simeon de Dios <simeon@nascentdigital.com>",
+    "license": "MIT",
+    "repository": "",
+    "main": "dist/index.js",
+    "module": "dist/index.es.js",
+    "jsnext:main": "dist/index.es.js",
+    "types": "dist/index.d.ts",
+    "scripts": {
+        "build": "rollup -c",
+        "start": "rollup -c -w",
+        "prepare": "npm run build",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "peerDependencies": {
+        "@wdio/sync": "^5.0.0",
+        "webdriverio": "^5.0.0"
+    },
+    "dependencies": {
+        "@nascentdigital/lattice": "^1.0.1",
+        "color-normalize": "^1.5.0",
+        "query-string": "^6.9.0"
+    },
+    "devDependencies": {
+        "@babel/core": "^7.7.4",
+        "@babel/runtime": "^7.7.4",
+        "@types/chai": "^4.2.6",
+        "@wdio/sync": "^5.16.11",
+        "chai": "^4.2.0",
+        "cross-env": "^6.0.3",
+        "rollup": "^1.27.8",
+        "rollup-plugin-babel": "^4.3.3",
+        "rollup-plugin-commonjs": "^10.1.0",
+        "rollup-plugin-typescript2": "^0.25.2",
+        "tslint": "^5.20.1",
+        "typescript": "^3.7.2",
+        "webdriverio": "^5.16.11"
+    }
+}

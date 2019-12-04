@@ -1,0 +1,20 @@
+# platform (fastboot Ubuntu Bionic)
+dist: bionic
+sudo: false
+
+# node target (using .nvmrc for version)
+language: node_js
+
+# github target
+branches:
+    only:
+        - master
+
+# install stage
+install:
+    - npm install
+    - npm run build
+
+# custom build stages
+script:
+    - npm run test
