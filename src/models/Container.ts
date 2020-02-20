@@ -1,6 +1,6 @@
 // imports
-import {expect} from "chai";
 import {Breakpoint, Breakpoints} from "@nascentdigital/lattice";
+import {expect} from "chai";
 import {ILayoutRule, Layout} from "../layout";
 
 

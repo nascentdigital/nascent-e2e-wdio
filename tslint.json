@@ -1,26 +1,55 @@
 {
-  "defaultSeverity": "error",
-  "extends": [
-    "tslint:recommended"
-  ],
-  "jsRules": {},
-  "rules": {
-    "member-ordering": [true, {"order": "fields-first"}],
-    "no-consecutive-blank-lines": [true, 2],
-    "no-console": false,
-    "object-literal-key-quotes": [true, "as-needed"],
-    "object-literal-shorthand": false,
-    "object-literal-sort-keys": false,
-    "one-line": false,
-    "trailing-comma": false,
-    "variable-name": {
-      "options": [
-        "ban-keywords",
-        "check-format",
-        "allow-leading-underscore",
-        "allow-pascal-case"
-      ]
-    }
-  },
-  "rulesDirectory": []
+    "defaultSeverity": "error",
+    "no-default-export": false,
+    "extends": [
+        "tslint:recommended"
+    ],
+    "jsRules": {},
+    "rules": {
+        "import-spacing": false,
+        "member-access": false,
+        "member-ordering": [
+            true,
+            {
+                "order": "fields-first"
+            }
+        ],
+        "no-consecutive-blank-lines": [
+            true,
+            2
+        ],
+        "no-console": false,
+        "no-unused-expression": false,
+        "no-var-keyword": true,
+        "object-literal-key-quotes": [
+            true,
+            "as-needed"
+        ],
+        "object-literal-shorthand": false,
+        "object-literal-sort-keys": false,
+        "one-line": false,
+        "prefer-const": true,
+        "quotemark": [
+            true,
+            "double",
+            "avoid-escape",
+            "jsx-double"
+        ],
+        "indent": [
+            true,
+            "spaces",
+            4
+        ],
+        "trailing-comma": false,
+        "variable-name": {
+            "options": [
+                "ban-keywords",
+                "check-format",
+                "allow-leading-underscore",
+                "allow-pascal-case"
+            ]
+        },
+        "whitespace": false
+    },
+    "rulesDirectory": []
 }

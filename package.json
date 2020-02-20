@@ -27,6 +27,7 @@
     },
     "dependencies": {
         "@nascentdigital/lattice": "^1.0.1",
+        "@types/debug": "^4.1.5",
         "color-normalize": "^1.5.0",
         "query-string": "^6.9.0"
     },

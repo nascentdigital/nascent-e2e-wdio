@@ -1,6 +1,6 @@
 // imports
-import queryString from "query-string";
 import {Breakpoint, Breakpoints} from "@nascentdigital/lattice";
+import queryString from "query-string";
 import {Container} from "./Container";
 
 

@@ -1,20 +1,16 @@
 // imports
-import colorNormalize from "color-normalize";
 import {expect} from "chai";
-import {Container} from "./Container";
+import colorNormalize from "color-normalize";
 import {Style} from "../style";
+import {Container} from "./Container";
 
 
 // class definition
 export class Component extends Container {
 
-    static create(parent: Container, selector: string, name: string): Component {
-        return new Component(parent, selector, name);
-    }
-
     public readonly parent: Container;
     public readonly name: string;
-    private readonly _selector: string;
+    private _selector: string;
     private _style?: Style;
 
 
@@ -27,6 +23,23 @@ export class Component extends Container {
         this.parent = parent;
         this.name = name || this.constructor.name;
         this._selector = selector;
+    }
+
+
+    public static create(parent: Container, selector: string, name: string): Component {
+        return new Component(parent, selector, name);
+    }
+
+    public at(index: number): this {
+
+        // clone this instance
+        const clone = Object.create(this) as this;
+
+        // mutate selector
+        clone._selector = clone._selector + `:nth-of-type(${index + 1})`;
+
+        // return clone
+        return clone;
     }
 
     public get selector(): string {
@@ -56,6 +69,10 @@ export class Component extends Container {
 
     public getClasses(): string[] {
         return this.element.getClasses();
+    }
+
+    public getText(): string {
+        return this.element.getText();
     }
 
     public isDisplayed() {
