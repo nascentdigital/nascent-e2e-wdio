@@ -22,8 +22,8 @@
         "test": "echo \"Error: no test specified\" && exit 1"
     },
     "peerDependencies": {
-        "@wdio/sync": "^5.0.0",
-        "webdriverio": "^5.0.0"
+        "@wdio/sync": "^6.1.0",
+        "webdriverio": "^6.1.0"
     },
     "dependencies": {
         "@nascentdigital/lattice": "^1.0.1",
