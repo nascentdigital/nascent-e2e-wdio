@@ -124,10 +124,17 @@ export class Component extends Container {
     }
 
     public waitUntilDisplayed(delayMs?: number, message?: string) {
-        this.element.waitForDisplayed(delayMs, false, message);
+        this.element.waitForDisplayed({
+            timeout: delayMs,
+            timeoutMsg: message
+        })
     }
 
     public waitUntilNotDisplayed(delayMs?: number, message?: string) {
-        this.element.waitForDisplayed(delayMs, true, message);
+        this.element.waitForDisplayed({
+            timeout: delayMs,
+            timeoutMsg: message,
+            reverse: true
+        });
     }
 }
