@@ -1,38 +1,28 @@
 {
     "compilerOptions": {
-        "target": "es2017",
+        "target": "es5",
         "module": "commonjs",
-
-        "baseUrl": "./src",
-
         "lib": [
             "dom",
             "dom.iterable",
             "esnext"
         ],
-        "paths": {
-            "*": [
-                "./*"
-            ],
-            "src/*": [
-                "./src/*"
-            ],
-            "test/*": [
-                "./test/*"
-            ]
-        },
         "typeRoots": [
-            "./src/@types",
-            "./node_modules/@types"
+            "node_modules/@types",
+            "src/@types"
         ],
         "types": [
-            "@wdio/sync",
             "chai",
-            "mocha"
+            "node",
+            "mocha",
+            "@wdio/sync"
         ],
+        "rootDir": "./src",
+        "outDir": "dist",
         "sourceMap": true,
         "declaration": true,
         "downlevelIteration": true,
+        "moduleResolution": "node",
         "resolveJsonModule": true,
         "isolatedModules": false,
         "skipLibCheck": true,
@@ -48,7 +38,9 @@
         "noUnusedParameters": true
     },
     "include": [
-        "./src/**/*",
-        "./test/**/*"
+        "src/**/*"
+    ],
+    "exclude": [
+        "test/**/*"
     ]
 }

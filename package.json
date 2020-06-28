@@ -12,36 +12,39 @@
     "license": "MIT",
     "repository": "git@github.com:nascentdigital/wdio-extend.git",
     "main": "dist/index.js",
-    "module": "dist/index.es.js",
-    "jsnext:main": "dist/index.es.js",
     "types": "dist/index.d.ts",
     "scripts": {
-        "build": "rollup -c",
-        "start": "rollup -c -w",
         "prepare": "npm run build",
-        "test": "echo \"Error: no test specified\" && exit 1"
+        "build": "tsc -p tsconfig.build.json",
+        "test": "ts-mocha test/**/*.spec.ts"
     },
     "peerDependencies": {
+        "@types/chai": "^4.2.11",
         "@wdio/sync": "^6.1.0",
+        "chai": "^4.2.0",
         "webdriverio": "^6.1.0"
     },
     "dependencies": {
         "@nascentdigital/lattice": "^1.0.1",
-        "@types/debug": "^4.1.5",
         "color-normalize": "^1.5.0",
+        "csstype": "^2.6.10",
         "query-string": "^6.13.1"
     },
     "devDependencies": {
-        "@babel/core": "^7.10.3",
-        "@babel/runtime": "^7.10.3",
         "@types/chai": "^4.2.11",
+        "@types/expect": "^24.3.0",
+        "@types/mocha": "^7.0.2",
+        "@types/sinon": "^9.0.4",
+        "@types/sinon-chai": "^3.2.4",
+        "@types/webdriverio": "^5.0.0",
         "@wdio/sync": "^6.1.14",
         "chai": "^4.2.0",
         "cross-env": "^6.0.3",
-        "rollup": "^2.18.1",
-        "rollup-plugin-babel": "^4.4.0",
-        "rollup-plugin-commonjs": "^10.1.0",
-        "rollup-plugin-typescript2": "^0.27.1",
+        "mocha": "^8.0.1",
+        "sinon": "^9.0.2",
+        "sinon-chai": "^3.5.0",
+        "ts-mocha": "^7.0.0",
+        "ts-sinon": "^1.2.0",
         "tslint": "^6.1.2",
         "typescript": "^3.9.5",
         "webdriverio": "^6.1.22"
