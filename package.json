@@ -36,6 +36,7 @@
         "@types/mocha": "^7.0.2",
         "@types/sinon": "^9.0.4",
         "@types/sinon-chai": "^3.2.4",
+        "@types/uuid": "^8.0.0",
         "@types/webdriverio": "^5.0.0",
         "@wdio/sync": "^6.1.14",
         "chai": "^4.2.0",
@@ -47,6 +48,7 @@
         "ts-sinon": "^1.2.0",
         "tslint": "^6.1.2",
         "typescript": "^3.9.5",
+        "uuid": "^8.2.0",
         "webdriverio": "^6.1.22"
     }
 }

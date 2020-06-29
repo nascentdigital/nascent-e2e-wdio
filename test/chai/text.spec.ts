@@ -1,66 +1,85 @@
 // imports
 import {expect} from "chai";
-import {StubbedInstance, stubInterface} from "ts-sinon";
-import {Browser, Element, ElementArray} from "@wdio/sync";
 import "../../src/chai";
+import {$, $$} from "../mock";
+
+
+// constants
+const Selector = ".selector";
+const TextA = "text a";
+const TextB = "text b";
+const TextC = "text c";
 
 
 // tests
 describe("Chai::text", () => {
 
-    // reset before each test
-    let browserStub: StubbedInstance<Browser>;
-    let elementStub: StubbedInstance<Element>;
-    beforeEach(() => {
-        browserStub = stubInterface<Browser>();
-        elementStub = stubInterface<Element>();
+    it("should throw element when there are no elements to target", () => {
+        const elements = $$(Selector, []);
+        expect(() => expect(elements).to.have.text(TextA)).to.throw();
     });
 
-    describe("when element doesn't exist", () => {
+    describe("when single element", () => {
 
-        // configure selector
-        const InvalidSelector = ".invalid-selector";
-        beforeEach(() => {
-            browserStub.$$.withArgs(InvalidSelector).returns(stubInterface<ElementArray>());
-        });
+        const element = $(Selector, {text: TextA});
 
-        it("should throw element when matching string", () => {
-            expect(() => expect(browserStub.$$(InvalidSelector)).to.have.text("blablabla")).to.throw;
-        });
-    });
+        describe("and matches string expectation", () => {
 
-    describe("when element exists", () => {
-
-        // configure selector
-        const Selector = ".selector";
-        const ElementText = "matching text";
-        beforeEach(() => {
-            // elementStub.selector = Selector;
-            elementStub.getText.returns(ElementText);
-            browserStub.$.withArgs(Selector).returns(elementStub);
-        });
-
-        describe("when matching string expectation", () => {
-
-            it("should not fail", () => {
-                expect(browserStub.$(Selector)).to.have.text(ElementText);
+            it("should pass", () => {
+                expect(element).to.have.text(TextA);
             });
 
-            it("should fail if negated", () => {
-                expect(() => expect(browserStub.$(Selector)).to.not.have.text(ElementText)).to.throw;
+            it("should fail when negated", () => {
+                expect(() => expect(element).to.not.have.text(TextA)).to.throw();
             });
         });
 
-        describe("when not matching string expectation", () => {
-
-            const DifferentText = ElementText + "_diff";
+        describe("and doesn't match string expectation", () => {
 
             it("should fail", () => {
-                expect(() => expect(browserStub.$(Selector)).to.have.text(DifferentText)).to.throw;
+                expect(() => expect(element).to.have.text(TextB)).to.throw();
             });
 
-            it("should not fail if negated", () => {
-                expect(browserStub.$(Selector)).to.not.have.text(DifferentText);
+            it("should pass if negated", () => {
+                expect(element).to.not.have.text(TextB);
+            });
+        });
+    });
+
+    describe("when multiple elements", () => {
+
+        describe("some match expected string", () => {
+
+            const elements = $$(Selector, [
+                {text: TextA},
+                {text: TextB},
+                {text: TextB},
+                {text: TextC},
+                {text: TextA},
+            ]);
+
+            it("should fail without additional assertions", () => {
+                expect(() => expect(elements).to.have.text(TextA)).to.throw();
+            });
+
+            it("should fail with just negation", () => {
+                expect(() => expect(elements).to.not.have.text(TextA)).to.throw();
+            });
+
+            it("should fail with 'everything' assertion", () => {
+                expect(() => expect(elements).everything.to.not.have.text(TextA)).to.throw();
+            });
+
+            it("should fail with 'everything' assertion and negated", () => {
+                expect(() => expect(elements).everything.to.not.have.text(TextA)).to.throw();
+            });
+
+            it("should pass with 'something' assertion", () => {
+                expect(elements).something.to.have.text(TextA);
+            });
+
+            it("should pass with 'something' assertion and negated", () => {
+                expect(elements).something.to.not.have.text(TextA);
             });
         });
     });

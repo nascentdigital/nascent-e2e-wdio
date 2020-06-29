@@ -12,12 +12,13 @@ export type Test<TResult> = (element: Element) => [boolean, TResult];
 
 // functions
 export function isElement(target: any): target is Element {
-    const isElement = target.selector && target.elementId;
-    return isElement;
+    return target.selector && typeof target.selector === "string"
+        && target.elementId && typeof target.elementId === "string";
 }
 
 export function isElementArray(target: any): target is ElementArray {
-    return target.selector && target.push;
+    return target.selector && typeof target.selector === "string"
+        && target.push && typeof target.push === "function";
 }
 
 export function captureElement(chai: ChaiStatic, object: any, message?: string) {
@@ -44,7 +45,7 @@ export function verifyElement<TValue>(assertion: AssertionStatic, utils: ChaiUti
     const negate = utils.flag(assertion, "negate");
 
     // iterate over elements, stopping at first convenience
-    let verified = !some;
+    let verified = !some && elements.length > 0;
     const values: TValue[] = [];
     for (const element of elements) {
 
