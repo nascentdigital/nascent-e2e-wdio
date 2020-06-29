@@ -23,11 +23,11 @@ describe("Chai::text", () => {
         expect(() => expect([1, 2, 3]).to.not.have.text(TextA)).to.throw();
     });
 
-    describe("when single element", () => {
+    describe("single element", () => {
 
         const element = $(Selector, {text: TextA});
 
-        describe("and matches string expectation", () => {
+        describe("matching string expectation", () => {
 
             it("should pass", () => {
                 expect(element).to.have.text(TextA);
@@ -38,7 +38,7 @@ describe("Chai::text", () => {
             });
         });
 
-        describe("and doesn't match string expectation", () => {
+        describe("not matching string expectation", () => {
 
             it("should fail", () => {
                 expect(() => expect(element).to.have.text(TextB)).to.throw();
@@ -50,9 +50,9 @@ describe("Chai::text", () => {
         });
     });
 
-    describe("when multiple elements", () => {
+    describe("multiple elements", () => {
 
-        describe("some match expected string", () => {
+        describe("with some matching expected string", () => {
 
             const elements = $$(Selector, [
                 {text: TextA},
