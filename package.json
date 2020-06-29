@@ -19,7 +19,6 @@
         "test": "ts-mocha test/**/*.spec.ts"
     },
     "peerDependencies": {
-        "@types/chai": "^4.2.11",
         "@wdio/sync": "^6.1.0",
         "chai": "^4.2.0",
         "webdriverio": "^6.1.0"
