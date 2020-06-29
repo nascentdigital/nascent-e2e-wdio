@@ -1,8 +1,10 @@
 // imports
 import {Element} from "@wdio/sync";
+import {PropertiesHyphen} from "csstype";
 import {stubInterface} from "ts-sinon";
 import * as uuid from "uuid";
 import ElementArray = WebdriverIO.ElementArray;
+import CSSProperty = WebdriverIO.CSSProperty;
 
 
 // constants + types
@@ -12,6 +14,7 @@ export interface MockElementData {
     readonly tag?: string;
     readonly text?: string;
     readonly bounds?: Rect;
+    readonly style?: Partial<Record<keyof PropertiesHyphen, Partial<CSSProperty>>>;
 }
 export class Rect {
 
@@ -52,7 +55,7 @@ export class Rect {
 export function $(selector: string, data: MockElementData = {}) {
 
     // resolve data
-    const {tag = DefaultElementTag, text = DefaultElementText} = data;
+    const {tag = DefaultElementTag, text = DefaultElementText, style = {}} = data;
 
     // create element
     const stub = stubInterface<Element>()
@@ -60,6 +63,7 @@ export function $(selector: string, data: MockElementData = {}) {
     stub.selector = selector;
     stub.getTagName.returns(tag.toUpperCase());
     stub.getText.returns(text);
+    stub.getCSSProperty.callsFake(key => style[key]);
 
     // set positioning if bounds are provided
     if (data.bounds) {

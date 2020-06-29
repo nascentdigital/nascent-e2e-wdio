@@ -30,6 +30,9 @@ chai.use(chai => {
             ? [positions]
             : positions;
 
+        // fail immediately if there are no positions to match
+        new chai.Assertion(positions, "Positions to be specified").to.have.length.gt(0);
+
         // compare target position to each element
         for (const element of elements) {
 

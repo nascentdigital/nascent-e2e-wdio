@@ -20,8 +20,12 @@ chai.use(chai => {
         new chai.Assertion(this._obj).to.haveOwnProperty("getCSSProperty");
         const element = this._obj as Element;
 
+        // assert there is a style to match
+        const keys = Object.keys(css) as CSSKey[];
+        new chai.Assertion(keys, "CSS style to be specified").to.have.length.gt(0);
+
         // verify css properties
-        for (const key of Object.keys(css) as CSSKey[]) {
+        for (const key of keys) {
 
             // get expected
             const expected = css[key];
