@@ -14,9 +14,13 @@ const TextC = "text c";
 // tests
 describe("Chai::text", () => {
 
-    it("should throw element when there are no elements to target", () => {
-        const elements = $$(Selector, []);
-        expect(() => expect(elements).to.have.text(TextA)).to.throw();
+    it("should fail when there are no elements to target", () => {
+        expect(() => expect($$(Selector, [])).to.not.have.text(TextA)).to.throw();
+        expect(() => expect(4).to.not.have.text(TextA)).to.throw();
+        expect(() => expect("test").to.not.have.text(TextA)).to.throw();
+        expect(() => expect(false).to.not.have.text(TextA)).to.throw();
+        expect(() => expect({}).to.not.have.text(TextA)).to.throw();
+        expect(() => expect([1, 2, 3]).to.not.have.text(TextA)).to.throw();
     });
 
     describe("when single element", () => {

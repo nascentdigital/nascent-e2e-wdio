@@ -1,7 +1,7 @@
 // imports
 import {expect} from "chai";
 import "../../src/chai";
-import {$, Rect} from "../mock";
+import {$, $$, Rect} from "../mock";
 
 
 // constants
@@ -11,6 +11,15 @@ const caption = $(".caption", {bounds: new Rect(100, 110, 100, 50)});
 
 // tests
 describe("Chai::position", () => {
+
+    it("should fail when there are no elements to target", () => {
+        expect(() => expect($$(".title", [])).to.not.be.positioned("leftAligned",  caption)).to.throw();
+        expect(() => expect(4).to.not.be.positioned("leftAligned",  caption)).to.throw();
+        expect(() => expect("test").to.not.be.positioned("leftAligned",  caption)).to.throw();
+        expect(() => expect(false).to.not.be.positioned("leftAligned",  caption)).to.throw();
+        expect(() => expect({}).to.not.be.positioned("leftAligned",  caption)).to.throw();
+        expect(() => expect([1, 2, 3]).to.not.be.positioned("leftAligned",  caption)).to.throw();
+    });
 
     describe("stacked column of elements", () => {
 
