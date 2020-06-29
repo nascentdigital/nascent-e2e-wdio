@@ -19,7 +19,7 @@ export class Page extends Container {
         // call base constructor
         super();
 
-        // intialize instance variables
+        // initialize instance variables
         this._path = path;
     }
 

@@ -3,31 +3,19 @@
         "target": "es2017",
         "module": "commonjs",
 
-        "baseUrl": "./src",
+        "rootDir": "./",
 
         "lib": [
             "dom",
             "dom.iterable",
             "esnext"
         ],
-        "paths": {
-            "*": [
-                "./*"
-            ],
-            "src/*": [
-                "./src/*"
-            ],
-            "test/*": [
-                "./test/*"
-            ]
-        },
         "typeRoots": [
             "./src/@types",
             "./node_modules/@types"
         ],
         "types": [
             "@wdio/sync",
-            "chai",
             "mocha"
         ],
         "sourceMap": true,

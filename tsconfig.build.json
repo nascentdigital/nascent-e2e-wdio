@@ -7,9 +7,12 @@
             "dom.iterable",
             "esnext"
         ],
+
+        "rootDir": "./src",
+        "outDir": "dist",
+
         "typeRoots": [
             "node_modules/@types",
-            "src/@types"
         ],
         "types": [
             "chai",
@@ -17,8 +20,6 @@
             "mocha",
             "@wdio/sync"
         ],
-        "rootDir": "./src",
-        "outDir": "dist",
         "sourceMap": true,
         "declaration": true,
         "downlevelIteration": true,
@@ -38,9 +39,9 @@
         "noUnusedParameters": true
     },
     "include": [
-        "src/**/*"
+        "./src/**/*"
     ],
     "exclude": [
-        "test/**/*"
+        "./test/**/*"
     ]
 }

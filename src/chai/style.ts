@@ -1,20 +1,21 @@
 // imports
-import chai from "chai";
 import colorNormalize from "color-normalize";
 import equals from "fast-deep-equal";
-import Element = WebdriverIO.Element;
 import {PropertiesHyphen} from "csstype";
+import ChaiStatic = Chai.ChaiStatic;
+import Element = WebdriverIO.Element;
 
 
 // type
-type CSSKey = keyof PropertiesHyphen;
+export type CSSKey = keyof PropertiesHyphen;
+export type CSSProperties = PropertiesHyphen;
 
 
 // plugin definition
-chai.use(chai => {
+export function styleAssertions(chai: ChaiStatic) {
 
     chai.Assertion.addMethod("style",
-        function(css: PropertiesHyphen) {
+        function(css: CSSProperties) {
 
         // assert type
         new chai.Assertion(this._obj).to.haveOwnProperty("getCSSProperty");
@@ -66,4 +67,4 @@ chai.use(chai => {
             }
         }
     });
-});
+}

@@ -1,5 +1,5 @@
 // imports
-import chai from "chai";
+import ChaiStatic = Chai.ChaiStatic;
 import Element = WebdriverIO.Element;
 
 
@@ -12,10 +12,10 @@ export type Position =
 
 
 // plugin definition
-chai.use(chai => {
+export function positionAssertions(chai: ChaiStatic) {
 
     chai.Assertion.addMethod("positioned",
-        function(positions: Position | Position[], ...elements: Element[]) {
+        function(positionOrPositions: Position | Position[], ...elements: Element[]) {
 
         // assert type
         new chai.Assertion(this._obj).to.haveOwnProperty("getLocation");
@@ -26,9 +26,9 @@ chai.use(chai => {
         const targetSize = target.getSize();
 
         // normalize positions
-        positions = typeof positions === "string"
-            ? [positions]
-            : positions;
+        const positions = typeof positionOrPositions === "string"
+            ? [positionOrPositions]
+            : positionOrPositions;
 
         // fail immediately if there are no positions to match
         new chai.Assertion(positions, "Positions to be specified").to.have.length.gt(0);
@@ -39,8 +39,8 @@ chai.use(chai => {
             // get element location
             const elementLocation = element.getLocation();
             const elementSize = element.getSize();
-
             for (const position of positions) {
+
                 // validate position
                 let targetEdge: number;
                 let elementEdge: number;
@@ -103,4 +103,4 @@ chai.use(chai => {
             }
         }
     });
-});
+}

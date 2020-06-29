@@ -1,10 +1,11 @@
 // imports
-import chai from "chai";
 import {captureElement, verifyElement} from "./util";
+import ChaiStatic = Chai.ChaiStatic;
+import ChaiUtils = Chai.ChaiUtils;
 
 
 // plugin definition
-chai.use((chai, utils) => {
+export function elementAssertions(chai: ChaiStatic, utils: ChaiUtils) {
 
     // language chains
     chai.Assertion.addProperty("everything", function() {
@@ -35,4 +36,4 @@ chai.use((chai, utils) => {
             expected,
             values);
     });
-});
+}

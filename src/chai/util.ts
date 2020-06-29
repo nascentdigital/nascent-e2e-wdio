@@ -1,9 +1,9 @@
 // imports
-import Element = WebdriverIO.Element;
-import ElementArray = WebdriverIO.ElementArray;
 import AssertionStatic = Chai.AssertionStatic;
 import ChaiUtils = Chai.ChaiUtils;
 import ChaiStatic = Chai.ChaiStatic;
+import Element = WebdriverIO.Element;
+import ElementArray = WebdriverIO.ElementArray;
 
 
 // types

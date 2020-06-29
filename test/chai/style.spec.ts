@@ -1,7 +1,11 @@
 // imports
 import {expect} from "chai";
-import "../../src/chai";
+import {ChaiExtensions} from "../../src";
 import {$, $$} from "../mock";
+
+
+// bind extensions
+ChaiExtensions.register();
 
 
 // constants

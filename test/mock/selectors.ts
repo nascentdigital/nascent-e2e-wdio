@@ -1,10 +1,10 @@
 // imports
-import {Element} from "@wdio/sync";
-import {PropertiesHyphen} from "csstype";
 import {stubInterface} from "ts-sinon";
 import * as uuid from "uuid";
-import ElementArray = WebdriverIO.ElementArray;
 import CSSProperty = WebdriverIO.CSSProperty;
+import Element = WebdriverIO.Element;
+import ElementArray = WebdriverIO.ElementArray;
+import {CSSKey} from "../../src";
 
 
 // constants + types
@@ -14,7 +14,7 @@ export interface MockElementData {
     readonly tag?: string;
     readonly text?: string;
     readonly bounds?: Rect;
-    readonly style?: Partial<Record<keyof PropertiesHyphen, Partial<CSSProperty>>>;
+    readonly style?: Partial<Record<CSSKey, Partial<CSSProperty>>>;
 }
 export class Rect {
 
