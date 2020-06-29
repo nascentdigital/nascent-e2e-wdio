@@ -1,6 +1,6 @@
 # platform (fastboot Ubuntu Bionic)
+os: linux
 dist: bionic
-sudo: false
 
 # node target (using .nvmrc for version)
 language: node_js
@@ -9,7 +9,6 @@ language: node_js
 branches:
     only:
         - master
-        - "refactor-2.0"
 
 # install stage
 install:
