@@ -11,8 +11,42 @@ const DefaultElementText = "default";
 export interface MockElementData {
     readonly tag?: string;
     readonly text?: string;
+    readonly bounds?: Rect;
 }
+export class Rect {
 
+    public readonly x: number;
+    public readonly y: number;
+    public readonly width: number;
+    public readonly height: number;
+
+
+    constructor(x: number, y: number, width: number, height: number) {
+        this.x = x;
+        this.y = y;
+        this.width = width;
+        this.height = height;
+    }
+
+    get top() { return this.y; }
+
+    get bottom() { return this.y + this.height; }
+
+    get left() { return this.x; }
+
+    get right() { return this.x + this.width; }
+
+    intersects(that: Rect): boolean {
+
+        // no intersection if one is to the left of the other
+        if (this.left >= that.right || that.left >= this.right) {
+            return false;
+        }
+
+        // otherwise it intersects if no intersection if one is above the other
+        else return !(this.top <= that.bottom || that.top <= this.bottom);
+    }
+}
 
 // functions
 export function $(selector: string, data: MockElementData = {}) {
@@ -26,6 +60,12 @@ export function $(selector: string, data: MockElementData = {}) {
     stub.selector = selector;
     stub.getTagName.returns(tag.toUpperCase());
     stub.getText.returns(text);
+
+    // set positioning if bounds are provided
+    if (data.bounds) {
+        stub.getLocation.returns(data.bounds);
+        stub.getSize.returns(data.bounds);
+    }
 
     // return element
     return stub;

@@ -1,7 +1,7 @@
 declare module "chai" {
     import {Element} from "@wdio/sync";
     import {PropertiesHyphen} from "csstype";
-    import {Position} from "extend/chai/position";
+    import {Position} from "../chai/position";
 
     global {
         export namespace Chai {
