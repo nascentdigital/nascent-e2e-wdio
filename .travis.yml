@@ -9,6 +9,7 @@ language: node_js
 branches:
     only:
         - master
+        - "refactor-2.0"
 
 # install stage
 install:

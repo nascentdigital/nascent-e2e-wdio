@@ -1,6 +1,13 @@
 # wdio-extend
-> A set of [WebdriverIO](https://webdriver.io/) extensions for creating powerful responsive E2E tests using a simple
-> Page Object Model API.
+> A set of [WebdriverIO](https://webdriver.io/) extensions to help build E2E tests that validate your user interface
+> using a combination of Chai extensions and a Page Object modeling language.
+
+[![NPM version](https://img.shields.io/npm/v/@nascentdigital/wdio-extend.svg)](https://www.npmjs.com/package/@nascentdigital/wdio-extend)
+[![downloads](https://img.shields.io/npm/dm/@nascentdigital/wdio-extend.svg)](http://npm-stat.com/charts.html?package=@nascentdigital/wdio-extend&from=2018-01-01)
+[![Node version](https://img.shields.io/node/v/@nascentdigital/wdio-extend.svg)](http://nodejs.org/download/)
+[![Build Status](https://travis-ci.com/nascentdigital/wdio-extend.svg?branch=master)](https://travis-ci.com/nascentdigital/wdio-extend.svg?branch=master)
+[![Code Coverage](https://img.shields.io/codecov/c/github/nascentdigital/wdio-extend.svg)](https://codecov.io/github/nascentdigital/wdio-extend)
+[![Known Vulnerabilities](https://snyk.io/test/github/nascentdigital/wdio-extend/badge.svg)](https://snyk.io/test/github/nascentdigital/wdio-extend)
 
 
 ## Installation
