@@ -1,6 +1,6 @@
 // imports
 import {Breakpoint, BreakpointsDefinition} from "@nascentdigital/lattice";
-import {BrowserExtensions} from "./browser";
+import {BrowserExtensions, URLParameters} from "./browser";
 import {ElementExtensions} from "./element";
 
 
@@ -14,6 +14,7 @@ declare module "@wdio/sync" {
         forBreakpoint(breakpoint: Breakpoint, action: () => void): void;
         forEachBreakpoint(action: (breakpoint: Breakpoint) => void, ...breakpoints: Breakpoint[]): void;
 
+        open(path: string, parameters?: URLParameters): void;
         scrollTo(x: number, y: number): void;
     }
 
