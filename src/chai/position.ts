@@ -1,6 +1,7 @@
 // imports
 import ChaiStatic = Chai.ChaiStatic;
 import Element = WebdriverIO.Element;
+import {almostEqual} from "./util";
 
 
 // types
@@ -49,42 +50,42 @@ export function positionAssertions(chai: ChaiStatic) {
                     case "above":
                         targetEdge = targetLocation.y + targetSize.height;
                         elementEdge = elementLocation.y;
-                        valid = targetEdge <= elementEdge;
+                        valid = targetEdge < elementEdge || almostEqual(targetEdge, elementEdge);
                         break;
                     case "topAligned":
                         targetEdge = targetLocation.y;
                         elementEdge = elementLocation.y;
-                        valid = targetEdge === elementEdge;
+                        valid = almostEqual(targetEdge, elementEdge);
                         break;
                     case "below":
                         targetEdge = targetLocation.y;
                         elementEdge = elementLocation.y + elementSize.height;
-                        valid = targetEdge >= elementEdge;
+                        valid = targetEdge > elementEdge || almostEqual(targetEdge, elementEdge);
                         break;
                     case "bottomAligned":
                         targetEdge = targetLocation.y + targetSize.height;
                         elementEdge = elementLocation.y + elementSize.height;
-                        valid = targetEdge === elementEdge;
+                        valid = almostEqual(targetEdge, elementEdge);
                         break;
                     case "leftOf":
                         targetEdge = targetLocation.x + targetSize.width;
                         elementEdge = elementLocation.x;
-                        valid = targetEdge <= elementEdge;
+                        valid = targetEdge < elementEdge || almostEqual(targetEdge, elementEdge);
                         break;
                     case "leftAligned":
                         targetEdge = targetLocation.x;
                         elementEdge = elementLocation.x;
-                        valid = targetEdge === elementEdge;
+                        valid = almostEqual(targetEdge, elementEdge);
                         break;
                     case "rightOf":
                         targetEdge = targetLocation.x;
                         elementEdge = elementLocation.x + elementSize.width;
-                        valid = targetEdge >= elementEdge;
+                        valid = targetEdge > elementEdge || almostEqual(targetEdge, elementEdge);
                         break;
                     case "rightAligned":
                         targetEdge = targetLocation.x + targetSize.width;
                         elementEdge = elementLocation.x + elementSize.width;
-                        valid = targetEdge === elementEdge;
+                        valid = almostEqual(targetEdge, elementEdge);
                         break;
                 }
 
