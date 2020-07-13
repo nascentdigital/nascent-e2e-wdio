@@ -1,5 +1,5 @@
 // imports
-import {Breakpoint} from "@nascentdigital/lattice";
+import {Breakpoint, Breakpoints} from "@nascentdigital/lattice";
 import {expect} from "chai";
 import BrowserObject = WebdriverIO.BrowserObject;
 
@@ -20,7 +20,9 @@ export function setBreakpoint(this: BrowserObject, breakpoint: Breakpoint): void
 
     // get breakpoint width
     const breakpoints = this.getBreakpointsDefinition();
-    const breakpointWidth = breakpoints[breakpoint];
+    const breakpointWidth = breakpoint === "xl"
+        ? breakpoints[breakpoint]
+        : breakpoints[Breakpoints[Breakpoints.indexOf(breakpoint) + 1]] - 1;
 
     // resize window
     this.setWindowSize(breakpointWidth + padding, windowSize.height);
