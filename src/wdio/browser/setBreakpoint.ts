@@ -9,7 +9,11 @@ export function setBreakpoint(this: BrowserObject, breakpoint: Breakpoint): void
 
     // fail if window can't be resized
     if (this.isMobile) {
-        expect.fail("Resize of window not support by browser.");
+
+        if (breakpoint !== "xs") {
+            expect.fail("Resize of window not support by browser.");
+        }
+
         return;
     }
 
