@@ -17,6 +17,9 @@ export function setBreakpoint(this: BrowserObject, breakpoint: Breakpoint): void
         return;
     }
 
+    // ensure scrollbar is an overlay
+    browser.execute(`document.body.style.overflowY = "overlay";`);
+
     // get sizes
     const windowSize = this.getWindowSize();
 
