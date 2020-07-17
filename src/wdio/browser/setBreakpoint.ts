@@ -8,7 +8,7 @@ import BrowserObject = WebdriverIO.BrowserObject;
 export function setBreakpoint(this: BrowserObject, breakpoint: Breakpoint): void {
 
     // fail if window can't be resized
-    if (!this.capabilities.setWindowRect) {
+    if (this.isMobile) {
         expect.fail("Resize of window not support by browser.");
         return;
     }
