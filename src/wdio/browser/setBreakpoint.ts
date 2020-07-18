@@ -4,6 +4,23 @@ import {expect} from "chai";
 import BrowserObject = WebdriverIO.BrowserObject;
 
 
+// declaration merging
+declare module "@wdio/sync" {
+    interface Browser {
+        putStyle(id: string, css: string): void;
+    }
+}
+
+
+// constants
+const StyleId = "__wdio-extend_setBreakpoint";
+const ScrollbarFixStyle =
+`
+body::-webkit-scrollbar { display: none; }
+body { scrollbar-width: none; }
+`;
+
+
 // command definition
 export function setBreakpoint(this: BrowserObject, breakpoint: Breakpoint): void {
 
@@ -18,7 +35,7 @@ export function setBreakpoint(this: BrowserObject, breakpoint: Breakpoint): void
     }
 
     // ensure scrollbar is an overlay
-    browser.execute(`document.body.style.overflowY = "overlay";`);
+    browser.putStyle(StyleId, ScrollbarFixStyle);
 
     // get sizes
     const windowSize = this.getWindowSize();
