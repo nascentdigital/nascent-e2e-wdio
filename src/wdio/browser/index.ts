@@ -5,6 +5,7 @@ import {setBreakpoint} from "./setBreakpoint";
 import {forBreakpoint} from "./forBreakpoint";
 import {forEachBreakpoint} from "./forEachBreakpoint";
 import {open, URLParameters} from "./open";
+import {putStyle} from "./putStyle";
 import {scrollTo} from "./scrollTo";
 
 
@@ -17,6 +18,7 @@ export namespace BrowserExtensions {
         browser.addCommand("forBreakpoint",forBreakpoint);
         browser.addCommand("forEachBreakpoint",forEachBreakpoint);
         browser.addCommand("open",open);
+        browser.addCommand("putStyle", putStyle);
         browser.addCommand("scrollTo", scrollTo);
     }
 }

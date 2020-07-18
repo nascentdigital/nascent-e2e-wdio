@@ -7,14 +7,17 @@ import {ElementExtensions} from "./element";
 // declaration merging
 declare module "@wdio/sync" {
     interface Browser {
-        getBreakpointsDefinition: () => BreakpointsDefinition;
-        getBreakpoint: () => Breakpoint;
-        setBreakpoint: (breakpoint: Breakpoint) => void;
 
         forBreakpoint(breakpoint: Breakpoint, action: () => void): void;
         forEachBreakpoint(action: (breakpoint: Breakpoint) => void, ...breakpoints: Breakpoint[]): void;
+        getBreakpointsDefinition: () => BreakpointsDefinition;
+        getBreakpoint: () => Breakpoint;
+        setBreakpoint: (breakpoint: Breakpoint) => void;
+        
+        putStyle(id: string, css: string): void;
 
         open(path: string, parameters?: URLParameters): void;
+
         scrollTo(x: number, y: number): void;
     }
 
