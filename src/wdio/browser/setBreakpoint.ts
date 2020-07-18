@@ -39,6 +39,8 @@ export function setBreakpoint(this: BrowserObject, breakpoint: Breakpoint): void
 
     // get sizes
     const windowSize = this.getWindowSize();
+    const htmlSize = $("html").getSize().width;
+    const padding = Math.max(0, windowSize.width - htmlSize);
 
     // get breakpoint width
     const breakpoints = this.getBreakpointsDefinition();
@@ -47,5 +49,5 @@ export function setBreakpoint(this: BrowserObject, breakpoint: Breakpoint): void
         : breakpoints[Breakpoints[Breakpoints.indexOf(breakpoint) + 1]] - 1;
 
     // resize window
-    this.setWindowSize(breakpointWidth, windowSize.height);
+    this.setWindowSize(breakpointWidth + padding, windowSize.height);
 }
