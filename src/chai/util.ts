@@ -11,7 +11,7 @@ export type Test<TResult> = (element: Element) => [boolean, TResult];
 
 
 // functions
-export function almostEqual(lhs: number, rhs: number, threshold: number = 0.5) {
+export function almostEqual(lhs: number, rhs: number, threshold: number = 1) {
     return Math.abs(lhs - rhs) <= threshold;
 }
 export function isElement(target: any): target is Element {

@@ -18,6 +18,7 @@ declare global {
             text(expected: string): Promise<void>;
 
             // position
+            roughly: Assertion;
             positioned(positions: Position | Position[], ...elements: Element[]): Promise<void>;
 
             // style

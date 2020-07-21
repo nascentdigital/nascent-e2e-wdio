@@ -11,6 +11,7 @@ ChaiExtensions.register();
 // constants
 const title = $(".title", {bounds: new Rect(100, 100, 100, 10)});
 const caption = $(".caption", {bounds: new Rect(100, 110, 100, 50)});
+const button = $(".button", {bounds: new Rect(220, 111, 100, 50)});
 
 
 // tests
@@ -28,6 +29,19 @@ describe("Chai::position", () => {
     it("should fail when there is no position defined", () => {
         expect(() => expect(title).to.be.positioned([], caption)).to.throw();
         expect(() => expect(title).to.not.be.positioned([], caption)).to.throw();
+    });
+
+    describe("elements vertically off by a pixel comparing top alignment", () => {
+
+        it("should fail by default", () => {
+            expect(caption).to.not.be
+                .positioned(["topAligned", "bottomAligned"], button);
+        });
+
+        it("should pass if adding 'roughly' to comparison", () => {
+            expect(caption).to.be
+                .roughly.positioned(["topAligned", "bottomAligned"], button);
+        });
     });
 
     describe("stacked column of elements", () => {

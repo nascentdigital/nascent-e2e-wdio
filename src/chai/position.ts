@@ -1,5 +1,6 @@
 // imports
 import ChaiStatic = Chai.ChaiStatic;
+import ChaiUtils = Chai.ChaiUtils;
 import Element = WebdriverIO.Element;
 import {almostEqual} from "./util";
 
@@ -13,7 +14,11 @@ export type Position =
 
 
 // plugin definition
-export function positionAssertions(chai: ChaiStatic) {
+export function positionAssertions(chai: ChaiStatic, utils: ChaiUtils) {
+
+    chai.Assertion.addProperty("roughly", function() {
+        utils.flag(this, "roughly", true);
+    });
 
     chai.Assertion.addMethod("positioned",
         function(positionOrPositions: Position | Position[], ...elements: Element[]) {
@@ -34,6 +39,9 @@ export function positionAssertions(chai: ChaiStatic) {
         // fail immediately if there are no positions to match
         new chai.Assertion(positions, "Positions to be specified").to.have.length.gt(0);
 
+        // determine variance
+        const variance = utils.flag(this, "roughly") ? 1 : 0.5;
+
         // compare target position to each element
         for (const element of elements) {
 
@@ -50,42 +58,42 @@ export function positionAssertions(chai: ChaiStatic) {
                     case "above":
                         targetEdge = targetLocation.y + targetSize.height;
                         elementEdge = elementLocation.y;
-                        valid = targetEdge < elementEdge || almostEqual(targetEdge, elementEdge);
+                        valid = targetEdge < elementEdge || almostEqual(targetEdge, elementEdge, variance);
                         break;
                     case "topAligned":
                         targetEdge = targetLocation.y;
                         elementEdge = elementLocation.y;
-                        valid = almostEqual(targetEdge, elementEdge);
+                        valid = almostEqual(targetEdge, elementEdge, variance);
                         break;
                     case "below":
                         targetEdge = targetLocation.y;
                         elementEdge = elementLocation.y + elementSize.height;
-                        valid = targetEdge > elementEdge || almostEqual(targetEdge, elementEdge);
+                        valid = targetEdge > elementEdge || almostEqual(targetEdge, elementEdge, variance);
                         break;
                     case "bottomAligned":
                         targetEdge = targetLocation.y + targetSize.height;
                         elementEdge = elementLocation.y + elementSize.height;
-                        valid = almostEqual(targetEdge, elementEdge);
+                        valid = almostEqual(targetEdge, elementEdge, variance);
                         break;
                     case "leftOf":
                         targetEdge = targetLocation.x + targetSize.width;
                         elementEdge = elementLocation.x;
-                        valid = targetEdge < elementEdge || almostEqual(targetEdge, elementEdge);
+                        valid = targetEdge < elementEdge || almostEqual(targetEdge, elementEdge, variance);
                         break;
                     case "leftAligned":
                         targetEdge = targetLocation.x;
                         elementEdge = elementLocation.x;
-                        valid = almostEqual(targetEdge, elementEdge);
+                        valid = almostEqual(targetEdge, elementEdge, variance);
                         break;
                     case "rightOf":
                         targetEdge = targetLocation.x;
                         elementEdge = elementLocation.x + elementSize.width;
-                        valid = targetEdge > elementEdge || almostEqual(targetEdge, elementEdge);
+                        valid = targetEdge > elementEdge || almostEqual(targetEdge, elementEdge, variance);
                         break;
                     case "rightAligned":
                         targetEdge = targetLocation.x + targetSize.width;
                         elementEdge = elementLocation.x + elementSize.width;
-                        valid = almostEqual(targetEdge, elementEdge);
+                        valid = almostEqual(targetEdge, elementEdge, variance);
                         break;
                 }
 
